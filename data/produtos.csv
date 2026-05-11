@@ -1,0 +1,65 @@
+id_produto,nome,categoria,preco,estoque
+1,"Notebook Dell",Informática,3500.00,15
+2,"Mouse Logitech",Informática,120.00,80
+3,"Teclado Mecânico",Informática,800.00,30
+4,"Monitor LG 24",Informática,1500.00,20
+5,"iPhone 15",Celular,5500.00,8
+6,"Fone Bluetooth",Acessório,250.00,50
+7,"SSD 1TB",Informática,450.00,40
+8,"Webcam HD",Informática,200.00,25
+9,"Notebook Dell",Informática,3500.00,15
+10,"Mouse Logitech",Informática,120.00,80
+11,"Teclado Mecânico",Informática,800.00,30
+12,"Monitor LG 24",Informática,1500.00,20
+13,"iPhone 15",Celular,5500.00,8
+14,"Fone Bluetooth",Acessório,250.00,50
+15,"SSD 1TB",Informática,450.00,40
+16,"Webcam HD",Informática,200.00,25
+17,"Notebook Dell",Informática,3500.00,15
+18,"Mouse Logitech",Informática,120.00,80
+19,"Teclado Mecânico",Informática,800.00,30
+20,"Monitor LG 24",Informática,1500.00,20
+21,"iPhone 15",Celular,5500.00,8
+22,"Fone Bluetooth",Acessório,250.00,50
+23,"SSD 1TB",Informática,450.00,40
+24,"Webcam HD",Informática,200.00,25
+25,"Notebook Dell",Informática,3500.00,15
+26,"Mouse Logitech",Informática,120.00,80
+27,"Teclado Mecânico",Informática,800.00,30
+28,"Monitor LG 24",Informática,1500.00,20
+29,"iPhone 15",Celular,5500.00,8
+30,"Fone Bluetooth",Acessório,250.00,50
+31,"SSD 1TB",Informática,450.00,40
+32,"Webcam HD",Informática,200.00,25
+33,"Notebook Dell",Informática,3500.00,15
+34,"Mouse Logitech",Informática,120.00,80
+35,"Teclado Mecânico",Informática,800.00,30
+36,"Monitor LG 24",Informática,1500.00,20
+37,"iPhone 15",Celular,5500.00,8
+38,"Fone Bluetooth",Acessório,250.00,50
+39,"SSD 1TB",Informática,450.00,40
+40,"Webcam HD",Informática,200.00,25
+41,"Notebook Dell",Informática,3500.00,15
+42,"Mouse Logitech",Informática,120.00,80
+43,"Teclado Mecânico",Informática,800.00,30
+44,"Monitor LG 24",Informática,1500.00,20
+45,"iPhone 15",Celular,5500.00,8
+46,"Fone Bluetooth",Acessório,250.00,50
+47,"SSD 1TB",Informática,450.00,40
+48,"Webcam HD",Informática,200.00,25
+49,"Notebook Dell",Informática,3500.00,15
+50,"Mouse Logitech",Informática,120.00,80
+51,"Teclado Mecânico",Informática,800.00,30
+52,"Monitor LG 24",Informática,1500.00,20
+53,"iPhone 15",Celular,5500.00,8
+54,"Fone Bluetooth",Acessório,250.00,50
+55,"SSD 1TB",Informática,450.00,40
+56,"Webcam HD",Informática,200.00,25
+57,"Notebook Dell",Informática,3500.00,15
+58,"Mouse Logitech",Informática,120.00,80
+59,"Teclado Mecânico",Informática,800.00,30
+60,"Monitor LG 24",Informática,1500.00,20
+61,"iPhone 15",Celular,5500.00,8
+62,"Fone Bluetooth",Acessório,250.00,50
+63,"SSD 1TB",Informática,450.00,40
+64,"Webcam HD",Informática,200.00,25
