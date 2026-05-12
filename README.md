@@ -148,18 +148,6 @@ Notebook Gold
 
 ---
 
-# Estrutura do Repositório
-
-```text
-.
-├── docs/
-├── notebooks/
-├── README.md
-└── mkdocs.yml
-```
-
----
-
 # Documentação
 
 A documentação do projeto foi desenvolvida utilizando MkDocs.
