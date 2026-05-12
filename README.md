@@ -1,181 +1,200 @@
-# 🚀 Trabalho 2 — Apache Spark com MinIO, PostgreSQL e Delta Lake
-
-Projeto desenvolvido para a disciplina **Arquitetura de Dados — SATC**.
-
-Pipeline completo de dados: **PostgreSQL → MinIO (landing-zone) → Delta Lake (bronze)**
+# Lakehouse com Databricks Free Edition e Arquitetura Medalhão
 
 ---
 
-## 👥 Integrantes
+## Integrantes
 
 - Luiz Fillipy Vefago Binatti
 - João Vitor de Oliveira Lima
 - Vinicius Pedroso Milanez
 
 ---
+ 
+## Objetivo
 
-## 🏗️ Arquitetura
+Este projeto tem como objetivo construir um pipeline de dados utilizando o Databricks Free Edition, implementando a arquitetura Medalhão (Landing → Bronze → Silver → Gold) com automação através de Jobs & Pipelines.
 
-```
-PostgreSQL (fonte)
-      │
-      │  JDBC
-      ▼
-MinIO bucket: landing-zone  (CSV)
-      │
-      │  PySpark + Delta Lake
-      ▼
-MinIO bucket: bronze  (Delta Lake)
-      │
-      │  DML: INSERT / UPDATE / DELETE
-      ▼
-Time Travel (versionamento automático)
+O pipeline realiza a extração, tratamento, organização e modelagem dos dados utilizando Delta Lake e conceitos de Engenharia de Dados.
+
+---
+
+# Arquitetura Medalhão
+
+A arquitetura do projeto segue o modelo Medalhão dividido em quatro camadas:
+
+* LANDING/DADOS
+* BRONZE
+* SILVER
+* GOLD
+
+Fluxo do pipeline:
+
+```text
+Banco de Dados
+      ↓
+LANDING/DADOS (CSV / JSON)
+      ↓
+BRONZE (Delta Lake bruto)
+      ↓
+SILVER (Data Quality)
+      ↓
+GOLD (Modelagem Dimensional)
+      ↓
+Jobs & Pipelines
 ```
 
 ---
 
-## 📋 Pré-requisitos
+# Etapas do Projeto
 
-| Ferramenta | Versão |
-|---|---|
-| Python | 3.12+ |
-| Poetry | 1.8+ |
-| Docker | 24+ |
-| Docker Compose | 2.24+ |
-| Java (JDK) | 11 ou 17 |
+## 1. Extração de Dados — LANDING/DADOS
+
+Os dados são extraídos de um banco de dados relacional ou não relacional.
+
+* Banco relacional → arquivos CSV
+* Banco não relacional → arquivos JSON
+
+Os arquivos são armazenados no schema:
+
+```text
+LANDING/DADOS
+```
 
 ---
 
-## ⚙️ Configuração do ambiente
+## 2. Camada Bronze
 
-### 1. Clone o repositório
+Os arquivos CSV ou JSON são lidos e convertidos para o formato Delta Lake.
+
+Objetivos da camada Bronze:
+
+* Persistência dos dados brutos
+* Armazenamento histórico
+* Padronização inicial
+
+Schema utilizado:
+
+```text
+BRONZE
+```
+
+---
+
+## 3. Camada Silver
+
+Na camada Silver são aplicadas regras de Data Quality.
+
+Exemplos:
+
+* Remoção de valores nulos
+* Tratamento de duplicidades
+* Padronização de tipos
+* Validações de regras de negócio
+
+Após o tratamento, os dados confiáveis são gravados no schema:
+
+```text
+SILVER
+```
+
+---
+
+## 4. Camada Gold
+
+Os dados tratados da camada Silver são utilizados para construir tabelas dimensionais seguindo a modelagem Ralph Kimball.
+
+Exemplos:
+
+* Tabelas fato
+* Tabelas dimensão
+* Estruturas analíticas
+
+Schema utilizado:
+
+```text
+GOLD
+```
+
+---
+
+# Automação
+
+Toda a execução do pipeline é automatizada utilizando Jobs & Pipelines do Databricks.
+
+Fluxo de execução:
+
+```text
+Notebook Landing
+↓
+Notebook Bronze
+↓
+Notebook Silver
+↓
+Notebook Gold
+```
+
+---
+
+# Tecnologias Utilizadas
+
+* Databricks Free Edition
+* Delta Lake
+* Apache Spark
+* Python
+* CSV / JSON
+* Jobs & Pipelines
+* MkDocs
+* GitHub
+
+---
+
+# Estrutura do Repositório
+
+```text
+.
+├── docs/
+├── notebooks/
+├── README.md
+└── mkdocs.yml
+```
+
+---
+
+# Documentação
+
+A documentação do projeto foi desenvolvida utilizando MkDocs.
+
+Para executar localmente:
 
 ```bash
-git clone https://github.com/<seu-usuario>/<seu-repo>.git
-cd <seu-repo>
+pip install mkdocs-material
+mkdocs serve
 ```
 
-### 2. Instale as dependências com Poetry
+---
+
+# Execução
+
+Clone o repositório:
 
 ```bash
-# Instale o Poetry se não tiver
-curl -sSL https://install.python-poetry.org | python3 -
-
-# Instale as dependências do projeto
-poetry install
-
-# Ative o ambiente virtual
-poetry shell
+git clone https://github.com/usuario/repositorio.git
 ```
 
-### 3. Suba os serviços com Docker Compose
+Entre na pasta:
 
 ```bash
-docker compose up -d
+cd repositorio
 ```
 
-Isso irá subir:
-- **PostgreSQL** na porta `5432` com o banco `loja_db` já populado
-- **MinIO** na porta `9000` (API) e `9001` (console web)
-- **minio-init**: container auxiliar que cria os buckets `landing-zone` e `bronze` automaticamente
-
-Verifique se está tudo rodando:
+Execute o MkDocs:
 
 ```bash
-docker compose ps
-```
-
-### 4. Acesse o console do MinIO (opcional)
-
-Abra [http://localhost:9001](http://localhost:9001) no navegador.
-
-| Campo | Valor |
-|---|---|
-| Usuário | `minioadmin` |
-| Senha | `minioadmin123` |
-
-### 5. Inicie o JupyterLab
-
-```bash
-poetry run jupyter lab
-```
-
-Abra o notebook em `notebooks/01-pipeline-minio-delta.ipynb`.
-
----
-
-## 📓 Notebooks
-
-| Arquivo | Descrição |
-|---|---|
-| `notebooks/01-pipeline-minio-delta.ipynb` | Pipeline completo: extração do PostgreSQL, ingestão na landing-zone, conversão para Delta Lake no bronze e operações DML |
-
----
-
-## 🗄️ Banco de dados (PostgreSQL)
-
-O script `data/init.sql` cria e popula automaticamente 3 tabelas:
-
-- **`produtos`** — catálogo de produtos da loja
-- **`clientes`** — cadastro de clientes
-- **`vendas`** — registro de transações
-
----
-
-## 🔄 Operações DML demonstradas
-
-Após a conversão para Delta Lake no bucket `bronze`, o notebook executa:
-
-```sql
--- INSERT: adiciona novas vendas
-INSERT INTO vendas_bronze VALUES (100, 1, 3, 2, 120.00, '2024-03-01'), ...
-
--- UPDATE: corrige o valor de uma venda
-UPDATE vendas_bronze SET valor_unitario = 999.99 WHERE id_venda = 100
-
--- DELETE: remove um registro
-DELETE FROM vendas_bronze WHERE id_venda = 101
+mkdocs serve
 ```
 
 ---
 
-## ⏱️ Time Travel (Delta Lake)
+# Considerações Finais
 
-O Delta Lake versiona automaticamente todas as alterações. Para consultar uma versão anterior:
-
-```python
-spark.read.format("delta").option("versionAsOf", 0).load("s3a://bronze/vendas").show()
-```
-
----
-
-## 📊 Tabelas Gerenciadas vs Não Gerenciadas
-
-| Aspecto | Gerenciada | Não Gerenciada (External) |
-|---|---|---|
-| Localização dos dados | Controlada pelo Spark | Definida pelo usuário (ex: MinIO) |
-| `DROP TABLE` | Remove dados + metadados | Remove apenas metadados |
-| Uso típico | Ambientes dev/teste | Data Lake em produção |
-
-Neste projeto utilizamos tabelas **não gerenciadas**, pois os dados residem no MinIO e registramos apenas os metadados com `LOCATION`.
-
----
-
-## 📚 Documentação
-
-A documentação completa está disponível via MkDocs:
-
-```bash
-poetry run mkdocs serve
-```
-
-Acesse [http://localhost:8000](http://localhost:8000)
-
----
-
-## 🔗 Referências
-
-- [Repositório modelo do professor](https://github.com/jlsilva01/spark-delta-minio-sqlserver)
-- [Delta Lake — documentação oficial](https://docs.delta.io)
-- [MinIO — documentação oficial](https://min.io/docs)
-- [Apache Spark — documentação oficial](https://spark.apache.org/docs/latest)
+O projeto demonstra a implementação de uma arquitetura Lakehouse utilizando Databricks e Delta Lake, aplicando conceitos modernos de Engenharia de Dados, Data Quality e modelagem dimensional com automação completa do pipeline.
