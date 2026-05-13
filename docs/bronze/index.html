@@ -4,23 +4,23 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
         
         
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Trabalho Databricks</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Bronze Layer - Trabalho Databricks</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">Trabalho Databricks</a>
+                <a class="navbar-brand" href="..">Trabalho Databricks</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -30,26 +30,26 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Início</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../landing/" class="nav-link">Landing Layer</a>
+                            </li>
                             <li class="navitem active">
-                                <a href="." class="nav-link">Início</a>
+                                <a href="./" class="nav-link">Bronze Layer</a>
                             </li>
                             <li class="navitem">
-                                <a href="landing/" class="nav-link">Landing Layer</a>
+                                <a href="../silver/" class="nav-link">Silver Layer</a>
                             </li>
                             <li class="navitem">
-                                <a href="bronze/" class="nav-link">Bronze Layer</a>
+                                <a href="../gold/" class="nav-link">Gold Layer</a>
                             </li>
                             <li class="navitem">
-                                <a href="silver/" class="nav-link">Silver Layer</a>
+                                <a href="../automacao/" class="nav-link">Automação</a>
                             </li>
                             <li class="navitem">
-                                <a href="gold/" class="nav-link">Gold Layer</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="automacao/" class="nav-link">Automação</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="conclusao/" class="nav-link">Conclusão</a>
+                                <a href="../conclusao/" class="nav-link">Conclusão</a>
                             </li>
                         </ul>
 
@@ -60,12 +60,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
+                                <a rel="prev" href="../landing/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="landing/" class="nav-link">
+                                <a rel="next" href="../silver/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -87,9 +87,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#introducao" class="nav-link">Introdução</a>
+            <li class="nav-item" data-level="1"><a href="#bronze-layer" class="nav-link">Bronze Layer</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#visao-geral-do-projeto" class="nav-link">Visão Geral do Projeto</a>
+            <li class="nav-item" data-level="2"><a href="#conversao-para-delta-lake" class="nav-link">Conversão para Delta Lake</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -100,12 +100,16 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="introducao">Introdução</h1>
-<h2 id="visao-geral-do-projeto">Visão Geral do Projeto</h2>
-<p>Este projeto teve como objetivo desenvolver um pipeline de dados completo utilizando a arquitetura Medalhão dentro da plataforma Databricks. A solução foi construída seguindo um modelo de processamento em múltiplas camadas, permitindo separar dados brutos, dados tratados e dados analíticos de maneira organizada e escalável. O fluxo foi estruturado utilizando as camadas Landing, Bronze, Silver e Gold, além da automação com Jobs &amp; Pipelines.</p>
-<p>A arquitetura Medalhão é amplamente utilizada em projetos modernos de Engenharia de Dados por oferecer maior controle sobre o ciclo de vida das informações. Cada camada possui uma responsabilidade específica dentro do pipeline, permitindo melhor governança, rastreabilidade e qualidade dos dados. Essa divisão também facilita manutenção, monitoramento e futuras expansões do projeto.</p>
-<p>O pipeline foi implementado no Databricks utilizando Delta Lake como tecnologia principal de armazenamento. A utilização do Delta Lake trouxe vantagens importantes, como suporte a transações ACID, versionamento de dados e melhor desempenho em operações analíticas. Além disso, o ambiente Databricks permitiu integrar notebooks, automações e processamento distribuído em uma única plataforma.</p>
-<p>Durante o desenvolvimento, foram aplicados conceitos de ingestão de dados, transformação, Data Quality, modelagem dimensional e automação de workflows. O projeto buscou reproduzir um cenário próximo de ambientes corporativos reais, demonstrando como pipelines modernos podem transformar dados brutos em informações organizadas e preparadas para análise estratégica.</p></div>
+<h1 id="bronze-layer">Bronze Layer</h1>
+<h2 id="conversao-para-delta-lake">Conversão para Delta Lake</h2>
+<p>Após a etapa de extração, os arquivos CSV ou JSON armazenados na camada Landing foram lidos utilizando notebooks no Databricks. O principal objetivo dessa etapa foi converter os dados brutos para o formato Delta Lake, criando assim a camada Bronze do pipeline Medalhão.</p>
+<p>O Delta Lake oferece diversas vantagens em relação aos formatos tradicionais de armazenamento. Entre elas estão suporte a transações ACID, versionamento de dados, melhor desempenho em consultas e maior confiabilidade durante operações de leitura e escrita. Essas características tornam o processamento mais robusto e adequado para ambientes corporativos.</p>
+<p>Durante essa etapa, os dados foram organizados em um novo schema chamado BRONZE. Embora os dados ainda sejam considerados brutos, agora eles estão armazenados em um formato otimizado para processamento distribuído dentro do Databricks. Essa camada também serve como base para futuras transformações e validações.</p>
+<p>A camada Bronze possui um papel fundamental na arquitetura Medalhão, pois representa a transição entre os dados originais e o ambiente de processamento analítico. Ela permite que os dados sejam armazenados de forma eficiente e preparados para os tratamentos aplicados posteriormente na camada Silver.</p>
+<p>Logo abaixo, estará o Schema da camada Bronze, onde ele está puxando os dados da camada anterior, ou seja, a Landing.</p>
+<p><img alt="" src="../B.png" /></p>
+<p>Com os produtos, acontece a mesma coisa que os clientes: o Bronze puxa os dados do Landing.</p>
+<p><img alt="" src="../B2.png" /></p></div>
             </div>
         </div>
 
@@ -113,14 +117,14 @@
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-        <script src="js/jquery-3.6.0.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
         <script>
-            var base_url = ".",
+            var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js"></script>
-        <script src="search/main.js"></script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -185,8 +189,3 @@
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.5.3
-Build Date UTC : 2026-05-13 01:00:38.145860+00:00
--->

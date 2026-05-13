@@ -1,0 +1,36 @@
+site_name: Trabalho 2 - Spark com MinIO e Delta Lake
+site_url: https://JoaoVitorOL.github.io/EngDados2/
+repo_url: https://github.com/JoaoVitorOL/EngDados2
+
+theme:
+  name: material
+  palette:
+    primary: indigo
+    accent: cyan
+  features:
+    - content.code.copy
+    - navigation.tabs
+
+nav:
+  - 🏠 Home: index.md
+  - ⚡ Apache Spark: spark.md
+  - 🗄️ PostgreSQL & MinIO: minio.md
+  - 🏔️ Delta Lake: delta.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - admonition
+  - pymdownx.details
+  - tables
