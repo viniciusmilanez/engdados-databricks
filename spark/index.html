@@ -8,29 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://JoaoVitorOL.github.io/EngDados2/">
+        <link rel="canonical" href="https://JoaoVitorOL.github.io/EngDados2/spark/">
       
       
+        <link rel="prev" href="..">
       
-        <link rel="next" href="spark/">
+      
+        <link rel="next" href="../minio/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Trabalho 2 - Spark com MinIO e Delta Lake</title>
+        <title>⚡ Apache Spark - Trabalho 2 - Spark com MinIO e Delta Lake</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -72,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#trabalho-2-apache-spark-com-minio-e-delta-lake" class="md-skip">
+        <a href="#apache-spark-pyspark" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +88,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Trabalho 2 - Spark com MinIO e Delta Lake" class="md-header__button md-logo" aria-label="Trabalho 2 - Spark com MinIO e Delta Lake" data-md-component="logo">
+    <a href=".." title="Trabalho 2 - Spark com MinIO e Delta Lake" class="md-header__button md-logo" aria-label="Trabalho 2 - Spark com MinIO e Delta Lake" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -106,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              🏠 Home
+              ⚡ Apache Spark
             
           </span>
         </div>
@@ -189,11 +191,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -210,9 +210,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="spark/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -231,7 +233,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="minio/" class="md-tabs__link">
+      <a href="../minio/" class="md-tabs__link">
         
   
   
@@ -250,7 +252,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="delta/" class="md-tabs__link">
+      <a href="../delta/" class="md-tabs__link">
         
   
   
@@ -285,7 +287,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Trabalho 2 - Spark com MinIO e Delta Lake" class="md-nav__button md-logo" aria-label="Trabalho 2 - Spark com MinIO e Delta Lake" data-md-component="logo">
+    <a href=".." title="Trabalho 2 - Spark com MinIO e Delta Lake" class="md-nav__button md-logo" aria-label="Trabalho 2 - Spark com MinIO e Delta Lake" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -312,6 +314,33 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏠 Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -331,7 +360,7 @@
   <span class="md-ellipsis">
     
   
-    🏠 Home
+    ⚡ Apache Spark
   
 
     
@@ -342,14 +371,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="." class="md-nav__link md-nav__link--active">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    🏠 Home
+    ⚡ Apache Spark
   
 
     
@@ -375,10 +404,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#o-que-e-o-apache-spark" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Objetivo
+        O que é o Apache Spark?
       
     </span>
   </a>
@@ -386,10 +415,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#arquitetura-do-pipeline" class="md-nav__link">
+  <a href="#principais-conceitos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Arquitetura do Pipeline
+        Principais conceitos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Principais conceitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sparksession" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SparkSession
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DataFrame
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spark-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spark SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracao-neste-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuração neste projeto
       
     </span>
   </a>
@@ -397,21 +476,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tecnologias-utilizadas" class="md-nav__link">
+  <a href="#leitura-via-jdbc-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tecnologias utilizadas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#estrutura-do-projeto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Estrutura do projeto
+        Leitura via JDBC (PostgreSQL)
       
     </span>
   </a>
@@ -433,34 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="spark/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ⚡ Apache Spark
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="minio/" class="md-nav__link">
+      <a href="../minio/" class="md-nav__link">
         
   
   
@@ -487,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="delta/" class="md-nav__link">
+      <a href="../delta/" class="md-nav__link">
         
   
   
@@ -534,10 +575,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objetivo" class="md-nav__link">
+  <a href="#o-que-e-o-apache-spark" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Objetivo
+        O que é o Apache Spark?
       
     </span>
   </a>
@@ -545,10 +586,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#arquitetura-do-pipeline" class="md-nav__link">
+  <a href="#principais-conceitos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Arquitetura do Pipeline
+        Principais conceitos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Principais conceitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sparksession" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SparkSession
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DataFrame
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spark-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spark SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracao-neste-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuração neste projeto
       
     </span>
   </a>
@@ -556,21 +647,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tecnologias-utilizadas" class="md-nav__link">
+  <a href="#leitura-via-jdbc-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tecnologias utilizadas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#estrutura-do-projeto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Estrutura do projeto
+        Leitura via JDBC (PostgreSQL)
       
     </span>
   </a>
@@ -597,74 +677,66 @@
   
 
 
-<h1 id="trabalho-2-apache-spark-com-minio-e-delta-lake">Trabalho 2 — Apache Spark com MinIO e Delta Lake</h1>
-<p>Projeto da disciplina <strong>Arquitetura de Dados — SATC</strong>.</p>
-<h2 id="objetivo">Objetivo</h2>
-<p>Implementar um pipeline de dados completo utilizando Apache Spark, MinIO (object storage compatível com S3) e Delta Lake, partindo de um banco de dados PostgreSQL como fonte.</p>
-<h2 id="arquitetura-do-pipeline">Arquitetura do Pipeline</h2>
-<pre class="mermaid"><code>flowchart LR
-    A[(PostgreSQL\nloja_db)] --&gt;|JDBC| B[landing-zone\nCSV]
-    B --&gt;|PySpark| C[bronze\nDelta Lake]
-    C --&gt;|DML| D[INSERT\nUPDATE\nDELETE]
-    D --&gt;|Versionamento| E[Time Travel]
+<h1 id="apache-spark-pyspark">⚡ Apache Spark (PySpark)</h1>
+<h2 id="o-que-e-o-apache-spark">O que é o Apache Spark?</h2>
+<p>Apache Spark é um framework de processamento de dados distribuído, open-source, projetado para ser rápido e de uso geral. Ele processa grandes volumes de dados em memória, sendo muito mais rápido que soluções baseadas em disco como o MapReduce.</p>
+<h2 id="principais-conceitos">Principais conceitos</h2>
+<h3 id="sparksession">SparkSession</h3>
+<p>Ponto de entrada para qualquer aplicação Spark. É através dela que criamos DataFrames e executamos SQL.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SparkSession</span>
 
-    subgraph MinIO
-        B
-        C
-    end</code></pre>
-<h2 id="tecnologias-utilizadas">Tecnologias utilizadas</h2>
-<table>
-<thead>
-<tr>
-<th>Tecnologia</th>
-<th>Versão</th>
-<th>Função</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Apache Spark</td>
-<td>3.5.1</td>
-<td>Processamento distribuído</td>
-</tr>
-<tr>
-<td>Delta Lake</td>
-<td>3.2.0</td>
-<td>Formato de tabela com ACID</td>
-</tr>
-<tr>
-<td>MinIO</td>
-<td>latest</td>
-<td>Object storage (S3 compatível)</td>
-</tr>
-<tr>
-<td>PostgreSQL</td>
-<td>15</td>
-<td>Banco de dados fonte</td>
-</tr>
-<tr>
-<td>Python</td>
-<td>3.12</td>
-<td>Linguagem de desenvolvimento</td>
-</tr>
-<tr>
-<td>Poetry</td>
-<td>1.8+</td>
-<td>Gerenciamento de pacotes</td>
-</tr>
-</tbody>
-</table>
-<h2 id="estrutura-do-projeto">Estrutura do projeto</h2>
-<div class="highlight"><pre><span></span><code>.
-├── docker-compose.yml       # MinIO + PostgreSQL
-├── pyproject.toml           # Dependências (Poetry)
-├── README.md
-├── data/
-│   └── init.sql             # Script de criação e carga do PostgreSQL
-├── notebooks/
-│   └── 01-pipeline-minio-delta.ipynb
-├── docs/                    # Páginas MkDocs
-└── mkdocs.yml
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span> \
+    <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;MeuApp&quot;</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="dataframe">DataFrame</h3>
+<p>Coleção distribuída de dados organizada em colunas, similar a uma tabela SQL.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;arquivo.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="spark-sql">Spark SQL</h3>
+<p>Permite executar queries SQL diretamente sobre DataFrames e tabelas registradas.</p>
+<div class="highlight"><pre><span></span><code><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM minha_tabela WHERE valor &gt; 100&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="configuracao-neste-projeto">Configuração neste projeto</h2>
+<p>Neste projeto, a SparkSession é configurada com suporte a:</p>
+<ul>
+<li><strong>Delta Lake</strong> — extensão para tabelas ACID</li>
+<li><strong>Hadoop AWS (S3A)</strong> — conector para o MinIO</li>
+<li><strong>PostgreSQL JDBC</strong> — driver para leitura do banco de dados</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">spark</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span>
+    <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;Trabalho2-SparkMinIO&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.jars.packages&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;io.delta:delta-spark_2.12:3.2.0,&quot;</span>
+            <span class="s2">&quot;org.apache.hadoop:hadoop-aws:3.3.4,&quot;</span>
+            <span class="s2">&quot;com.amazonaws:aws-java-sdk-bundle:1.12.262,&quot;</span>
+            <span class="s2">&quot;org.postgresql:postgresql:42.7.3&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.sql.extensions&quot;</span><span class="p">,</span> <span class="s2">&quot;io.delta.sql.DeltaSparkSessionExtension&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.sql.catalog.spark_catalog&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;org.apache.spark.sql.delta.catalog.DeltaCatalog&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.hadoop.fs.s3a.endpoint&quot;</span><span class="p">,</span>          <span class="s2">&quot;http://localhost:9000&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.hadoop.fs.s3a.access.key&quot;</span><span class="p">,</span>        <span class="s2">&quot;minioadmin&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.hadoop.fs.s3a.secret.key&quot;</span><span class="p">,</span>        <span class="s2">&quot;minioadmin123&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.hadoop.fs.s3a.path.style.access&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="leitura-via-jdbc-postgresql">Leitura via JDBC (PostgreSQL)</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pg_props</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span>     <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;admin123&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;driver&quot;</span><span class="p">:</span>   <span class="s2">&quot;org.postgresql.Driver&quot;</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">jdbc</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;jdbc:postgresql://localhost:5432/loja_db&quot;</span><span class="p">,</span>
+    <span class="n">table</span><span class="o">=</span><span class="s2">&quot;vendas&quot;</span><span class="p">,</span>
+    <span class="n">properties</span><span class="o">=</span><span class="n">pg_props</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 
 
@@ -715,10 +787,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["content.code.copy", "navigation.tabs"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.tabs"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
